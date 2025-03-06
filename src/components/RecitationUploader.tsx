@@ -259,19 +259,7 @@ const RecitationUploader = ({
                     <Switch id="tafseer" checked={showTafseer} onCheckedChange={setShowTafseer} />
                   </div>
                   
-                  <div className="sm:col-span-2 space-y-2">
-                    <Label htmlFor="background">الخلفية المرئية</Label>
-                    <Select value={background} onValueChange={value => setBackground(value as BackgroundType)}>
-                      <SelectTrigger id="background">
-                        <SelectValue placeholder="اختر نوع الخلفية" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="none">بدون خلفية</SelectItem>
-                        <SelectItem value="color">لون ثابت</SelectItem>
-                        <SelectItem value="image">صورة إسلامية</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
+                  
                 </div>
                 
                 <Button className="w-full" disabled={!isFormValid || isUploading} onClick={handleUpload}>
