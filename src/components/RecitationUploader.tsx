@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, ChangeEvent } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
@@ -14,8 +13,6 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import TagInput from './TagInput';
 import AudioPlayer from './AudioPlayer';
-
-<lov-add-dependency>framer-motion@10.16.4</lov-add-dependency>
 
 interface RecitationUploaderProps {
   className?: string;
@@ -51,7 +48,6 @@ const RecitationUploader = ({ className }: RecitationUploaderProps) => {
   };
 
   const validateAndSetFile = (file: File) => {
-    // Check file type
     if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
       toast({
         title: "خطأ في نوع الملف",
@@ -61,7 +57,6 @@ const RecitationUploader = ({ className }: RecitationUploaderProps) => {
       return;
     }
 
-    // Check file size
     if (file.size > MAX_FILE_SIZE) {
       toast({
         title: "حجم الملف كبير جداً",
@@ -71,7 +66,6 @@ const RecitationUploader = ({ className }: RecitationUploaderProps) => {
       return;
     }
 
-    // Valid file, set it
     setFile(file);
     setAudioUrl(URL.createObjectURL(file));
   };
@@ -111,7 +105,6 @@ const RecitationUploader = ({ className }: RecitationUploaderProps) => {
     setIsUploading(true);
     setUploadProgress(0);
     
-    // Simulate upload progress
     const interval = setInterval(() => {
       setUploadProgress(prev => {
         if (prev >= 100) {
@@ -122,7 +115,6 @@ const RecitationUploader = ({ className }: RecitationUploaderProps) => {
       });
     }, 200);
     
-    // Simulate API call with setTimeout
     setTimeout(() => {
       clearInterval(interval);
       setIsUploading(false);
@@ -133,7 +125,6 @@ const RecitationUploader = ({ className }: RecitationUploaderProps) => {
         description: "يمكنك الآن الاستماع للتلاوة من صفحة التلاوات",
       });
       
-      // Reset form after success
       setTimeout(() => {
         setFile(null);
         setAudioUrl('');
